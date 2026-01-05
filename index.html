@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIELIT WBL</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* ================= Global ================= */
+/* ================= Global ================= */
+body{
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(
+    135deg,
+    #ebe9f0 0%,
+    #bbaab5 40%,
+    #1e293b 70%,
+    #ecffe6 100%
+  );
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+/* ===== Navbar Links Border & Hover Effect ===== */
+.navbar .nav-link {
+  position: relative;
+  padding: 6px 14px;
+  margin: 0 6px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  color: #020617 !important;
+  transition: all 0.35s ease;
+
+}
+
+/* Hover effect */
+.navbar .nav-link:hover {
+  border-color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.15);
+  color: #0ea5e9 !important;
+}
+
+/* Active link (optional but nice) */
+.navbar .nav-link.active {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.2);
+  color: #2563eb !important;
+}
+
+
+    /* ================= Navbar ================= */
+    .navbar{
+      background: rgba(163, 218, 75, 0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ================= Hero ================= */
+    .hero{
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1{
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 800;
+    }
+
+    .hero p{
+      max-width: 700px;
+      margin: 1rem auto;
+      font-size: 1.05rem;
+      color: #cbd5f5;
+    }
+
+    .typing{
+      color: #38bdf8;
+      border-right: 3px solid #38bdf8;
+      padding-right: 6px;
+      animation: blink 0.9s infinite;
+    }
+
+    @keyframes blink{
+      50% { border-color: transparent; }
+    }
+
+    /* ================= Cards ================= */
+    .card{
+      position: relative;
+      background: linear-gradient(180deg, #020617, #020617ee);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    }
+
+    .card:hover{
+      transform: perspective(800px) rotateX(4deg) translateY(-6px);
+      box-shadow: 0 30px 60px rgba(14,165,233,0.35);
+    }
+
+    .card::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      opacity: 0;
+      transition: 0.4s;
+      z-index: -1;
+    }
+
+    .card:hover::before{
+      opacity: 0.15;
+    }
+
+    .card img{
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover img{
+      transform: scale(1.07);
+    }
+
+    .card-body h5{
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .card-body p{
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* ================= Buttons ================= */
+    .btn-primary{
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14,165,233,0.5);
+    }
+
+    /* ================= Footer ================= */
+    .footer{
+      background: linear-gradient(
+        to top,
+        rgba(14,165,233,0.12),
+        rgba(2,6,23,0.98)
+      );
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 4.5rem 2rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-container{
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand h3{
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(90deg,#38bdf8,#6366f1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p{
+      color: #94a3b8;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .footer-links h4{
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links a{
+      display: block;
+      color: #94a3b8;
+      text-decoration: none;
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover{
+      color: #38bdf8;
+      transform: translateX(6px);
+    }
+
+    .footer-bottom{
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    /* ================= Mobile ================= */
+    @media (max-width: 768px){
+      .footer-container{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-links a:hover{
+        transform: none;
+      }
+
+      .hero{
+        min-height: 70vh;
+      }
+    }
+  
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">NIELIT WBL</a>
+    <img src="https://wblp.in/assets/img/wblLogoXL.png" alt="NIELIT Logo" height="60">
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#students">Interns</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <h1 class="display-4 fw-bold">
+      WBL Batch<br>
+      <span id="typewriter" class="typing"></span>
+    </h1>
+    <p class="text-dark mt-3 ">
+    Work-based learning (WBL) is an educational strategy that integrates real-life work experiences with academic learning, allowing students and employees to develop skills and knowledge in a practical environment.
+    </p>
+  </div>
+</section>
+
+<!-- STUDENTS -->
+<section class="container py-5" id="students">
+<h2 class="text-center mb-5">
+  The <span class="text-info">WBL Interns</span>
+</h2>
+
+<div class="row g-4" id="studentGrid"></div>
+</section>
+
+<!-- RESUME MODAL -->
+<div class="modal fade" id="resumeModal">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0">
+        <iframe id="pdfFrame" width="100%" height="600px"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <h3>NIELIT WBL</h3>
+      <p>
+        WBL Batch July 2025<br>
+        NIELIT Ropar<br>          
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#students">Batch</a>
+      <a href="https://nielit.gov.in/" target="_blank">NIELIT</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Connect</h4>
+      <a href="https://wblp.in/search-wbl-Opportunities?search=Ropar" target="_blank">
+        <i class="fab fa-web"></i> Wbl Portal
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="mailto:aimlbatch@nielit.gov.in">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025-26 NIELIT Ropar WBL Batch. All rights reserved.
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ================= STUDENT DATA ================= */
+const students = [
+  {
+     name:"Saksham",
+    degree:"B.TECH AI/ML",
+    image:"images/Saksham.jpg",
+    portfolio:"https://saksham-portfolio.lovable.app/",
+    resume:"resumes/Saksham.pdf"
+  },
+  {
+  name:"Rishikesh Kumar",
+    degree:"B.TECH Information Technology",
+    image:"images/Rishi.jpeg",
+    portfolio:"https://avasthirishi.github.io/My_portfolio/",
+    resume:"resumes/rishikesh.pdf"
+  },
+   {
+    name:"Sakshi Parasher",
+    degree:"BTECH AI/ML",
+    image:"images/Sakshi.jpeg",
+    portfolio:"https://sakshi24-parashar.github.io/Mine_Fifth/#contact",
+    resume:"resume/iit.pdf"
+  },
+  {
+     name:"Preeti Devi",
+    degree:"BTECH CSE + Diploma in Computer Application",
+    image:"images/Preeti.jpg",
+    portfolio:"https://simranjangral559.github.io/Portfoilio/",
+    resume:"resume/PREETI.pdf"
+  },
+  {
+    name:"Jyoti Rani",
+    degree:"M.Sc Information Technology",
+    image:"images/akshdha.jpeg",
+    portfolio:"",
+    resume:"resume/Jyoti.pdf"
+  },
+  {
+    name:"Manjinder KAur",
+    degree:"BCA + MSC DATA SCIENCE",
+    image:"images/Manjinder.jpeg",
+    portfolio:"",
+    resume:"resume/Manjinder.pdf"
+  },
+  {
+    name:"Paras Misra",
+    degree:" Bachelor of Computer Adminstration + Master of Computer Application",
+    image:"images/Paras.jpeg",
+    portfolio:"",
+    resume:"resume/Paras.pdf"
+  },
+  
+   
+   {
+    name:"Ankush",
+    degree:"M.Sc Information Technology",
+    image:"images/akshdh.jpeg",
+    portfolio:"",
+    resume:""
+  },
+   
+];
+ 
+/* ================= AUTO GENERATE CARDS ================= */
+const grid = document.getElementById("studentGrid");
+
+students.forEach(s => {
+  grid.innerHTML += `
+  <div class="col-md-4">
+    <div class="card h-100">
+      <img src="${s.image}"
+        onerror="this.src='https://ui-avatars.com/api/?name=${s.name}&background=111&color=fff'">
+      <div class="card-body text-center">
+        <h5>${s.name}</h5>
+        <small class="text-info">${s.degree}</small>
+        <div class="d-flex gap-2 mt-3">
+          <a href="${s.portfolio}" target="_blank" class="btn btn-light w-50">
+            <i class="fa fa-globe"></i> Portfolio
+          </a>
+          <button class="btn btn-outline-info w-50"
+            onclick="openResume('${s.resume}','${s.name}')">
+            <i class="fa fa-file-pdf"></i> Resume
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+});
+
+/* ================= TYPING EFFECT ================= */
+const text="July 2025";
+let i=0;
+function typeWriter(){
+  if(i<text.length){
+    document.getElementById("typewriter").innerHTML+=text.charAt(i);
+    i++;setTimeout(typeWriter,150);
+  }
+}
+window.onload=typeWriter;
+
+/* ================= MODAL ================= */
+const modal=new bootstrap.Modal(document.getElementById('resumeModal'));
+const frame=document.getElementById('pdfFrame');
+const title=document.getElementById('modalTitle');
+
+function openResume(src,name){
+  frame.src=src;
+  title.innerText=name+"'s Resume";
+  modal.show();
+}
+</script>
+
+</body>
+</html>
